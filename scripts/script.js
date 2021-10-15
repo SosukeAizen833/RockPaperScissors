@@ -1,5 +1,5 @@
 function get_comp_choice(){
-    let choice  = Math.floor(Math.random()*3 +1)
+    let choice  = Math.floor(Math.random()*3 + 1)
     if(choice === 1){
         console.log("Computer chose: rock")
         return "rock"
@@ -20,21 +20,23 @@ function get_player_choice(){
     return player_choice.toLowerCase()
 }
 
-function start_game(num_games){
+function start_game(rounds){
     let player_score  = 0;
     let comp_score = 0;
-    for(let i=0;i<num_games;i++){
+    for(let i=0;i<rounds;i++){
          
         let player_choice = get_player_choice();
         let comp_choice = get_comp_choice();
 
         if(comp_choice==player_choice){
             console.log("match tied")
+            console.log(`Computer score: ${comp_score}`)
+            console.log(`Player score: ${player_score}`)
             continue;
         }
 
-        if(comp_choice=='rock'){
-            if(player_choice=='scissors'){
+        if(comp_choice==='rock'){
+            if(player_choice==='scissors'){
                 comp_score++;
                 console.log("You lose this round")
             }else{
@@ -43,7 +45,7 @@ function start_game(num_games){
             }
             
         }
-        else if(comp_choice=='paper'){
+        else if(comp_choice==='paper'){
             if(player_choice === 'scissors'){
                 player_score++;
                 console.log("You win this round")
@@ -67,14 +69,19 @@ function start_game(num_games){
         console.log(`Player score: ${player_score}`)
     }
 
+    winner(player_score,comp_score)
+}
+
+
+function winner(player_score,comp_score){
     if(comp_score>player_score){
-        console.log("You lose")
+        alert("You lose")
     }
     else if(comp_score < player_score){
-        console.log("you won")
+        alert("You win")
     }
     else{
-        console.log("Drawn")
+        alert("Drawn")
     }
 }
 
