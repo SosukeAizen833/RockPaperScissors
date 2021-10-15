@@ -30,8 +30,7 @@ function start_game(rounds){
 
         if(comp_choice==player_choice){
             console.log("match tied")
-            console.log(`Computer score: ${comp_score}`)
-            console.log(`Player score: ${player_score}`)
+            display_score(player_score,comp_score)
             continue;
         }
 
@@ -65,8 +64,7 @@ function start_game(rounds){
             }
         }
 
-        console.log(`Computer score: ${comp_score}`)
-        console.log(`Player score: ${player_score}`)
+        display_score(player_score,comp_score)
     }
 
     winner(player_score,comp_score)
@@ -83,6 +81,11 @@ function winner(player_score,comp_score){
     else{
         alert("Drawn")
     }
+}
+
+function display_score(player_score,comp_score){
+    console.log(`Player Score: ${player_score}`)
+    console.log(`Computer Score: ${comp_score}`)    
 }
 
 start_game(5);
