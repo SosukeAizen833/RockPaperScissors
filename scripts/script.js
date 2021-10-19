@@ -63,8 +63,7 @@ function get_comp_choice(){
 function start_game(player_choice){
     
     let comp_choice = get_comp_choice();
-
-
+    document.getElementById('final').innerHTML = ""
     if(comp_choice==player_choice){
         
         winner()
@@ -115,7 +114,6 @@ function start_game(player_choice){
     
 }
 
-
 function winner(){
     if(player_score == 5){
 
@@ -123,16 +121,15 @@ function winner(){
         comp_score = 0;
         update_score()
         document.getElementById('info').innerHTML = ""
+        document.getElementById('final').innerHTML = "You Win"
     }
     if(comp_score==5){
         player_score = 0;
         comp_score = 0;
         update_score()
         document.getElementById('info').innerHTML = ""
+        document.getElementById('final').innerHTML = "You Lose"
     }
-
-    
-
 }
 
 
