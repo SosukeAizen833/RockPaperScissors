@@ -1,3 +1,4 @@
+
 const startBtn = document.querySelector('.start-btn');
 const content = document.createElement('div')
 content.classList.add('button-container')
@@ -40,100 +41,100 @@ let comp_score = 0;
 
 function get_comp_choice(){
     let choice  = Math.floor(Math.random()*3 + 1)
+    let comp_choice
     if(choice === 1){
         console.log("Computer chose: rock")
-        return "rock"
+        comp_choice = 'rock'
     }
-    if(choice === 2){
+    else if(choice === 2){
         console.log("Computer chose: paper")
-        return "paper"
+        comp_choice = "paper"
     }
-    if(choice === 3){
+    else{
         console.log("Computer chose: scissors")
-        return "scissor"
+        comp_choice = "scissor"
     }
+    document.getElementById('info').innerHTML =  `Computer chose ${comp_choice}`
+    return comp_choice
 }
 
 
 
 function start_game(player_choice){
-         
+    
+    let comp_choice = get_comp_choice();
+
+
+    if(comp_choice==player_choice){
         
-        let comp_choice = get_comp_choice();
-
-
-        if(comp_choice==player_choice){
-            
-            winner(player_score,comp_score)
-            return;
-        }
-
-        if(comp_choice==='rock'){
-            if(player_choice==='scissor'){
-                comp_score++;
-                console.log("You lose this round")
-            }else{
-                player_score++;
-                console.log("You win this round")
-            }
-            winner(player_score,comp_score)
-            
-        }
-        else if(comp_choice==='paper'){
-            if(player_choice === 'scissor'){
-                player_score++;
-                console.log("You win this round")
-            }else{
-                comp_score++;
-                console.log("You lose this round")
-            }
-            winner(player_score,comp_score)
-            
-        }
-        else{
-            if(player_choice==='rock'){
-                player_score++;
-                console.log("You win this round")
-            }else{
-                comp_score++;
-                console.log('You lose this round')
-            }
-            winner(player_score,comp_score)
-        }
-
-        player_score = 0;
-        comp_score = 0;
+        winner()
+        document.getElementsById.innerHTML =  `Computer chose ${comp_choice}`
         return;
-        display_score(player_score,comp_score)
+    }
 
+    if(comp_choice==='rock'){
+
+        if(player_choice==='scissor'){
+            comp_score++;            
+        }else{
+            player_score++;
+            
+        }
+        update_score()
+        winner()
+        
+    }
+    else if(comp_choice==='paper'){
+        if(player_choice === 'scissor'){
+            player_score++;
+            console.log("You win this round")
+            document.getElementById('pscore').innerHTML = player_score
+        }else{
+            comp_score++;
+            console.log("You lose this round")
+            document.getElementById('cscore').innerHTML = comp_score
+        }
+        update_score()
+        winner()
+        
+    }
+    else{
+        if(player_choice==='rock'){
+            player_score++;
+            console.log("You win this round")
+        }else{
+            comp_score++;
+            console.log('You lose this round')
+            
+        }
+        update_score()
+        winner()
+    }
+    
+    return;
     
 }
 
 
-function winner(player_score,comp_score){
+function winner(){
+    if(player_score == 5){
 
-    const div = document.createElement('div')
-    if(comp_score>player_score){
-        winner.innerHTML = "You lose"
+        player_score = 0;
+        comp_score = 0;
+        update_score()
+        document.getElementById('info').innerHTML = ""
     }
-    else if(comp_score < player_score){
-        winner.innerHTML = "You Win"
+    if(comp_score==5){
+        player_score = 0;
+        comp_score = 0;
+        update_score()
+        document.getElementById('info').innerHTML = ""
     }
-    else{
-        winner.innerHTML = "Drawn"
-    }
-    let body = document.body
-    body.appendChild(winner)
+
+    
+
 }
 
-function display_score(player_score,comp_score){
-    const div1 = document.createElement('div')
-    div1.innerHTML=`Player Score: ${player_score}`
-    console.log(`Player Score: ${player_score}`)
-    const div2 = document.createElement('div')
-    div2.innerHTML=`Computer Score: ${comp_score}`
-    console.log(`Computer Score: ${comp_score}`)    
-}
 
 
 startBtn.addEventListener('click',()=>{
@@ -147,4 +148,9 @@ startBtn.addEventListener('click',()=>{
         })
     }
 })
+
+function update_score(){
+    document.getElementById('cscore').innerHTML = comp_score
+    document.getElementById('pscore').innerHTML = player_score
+}
 

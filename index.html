@@ -12,11 +12,24 @@
     <script src="scripts/script.js" defer></script>
 </head>
 <body>
+    
     <div class="header">
         <h1>Rock Paper Scissors</h1>
     </div>
-    <div style="display: flex; justify-content: center; margin: 30px 0px">
+    
+    <div class="start">
         <button class="start-btn">Start Game</button>
     </div>
+    <div class="score-card">
+        <div class="score_ind">
+            <p>Player Score</p>
+            <p id="pscore">0</p>
+        </div>
+        <div class="score_ind">
+            <p>Computer Score</p>
+            <p id='cscore'>0</p>
+        </div>
+    </div>
+    <div id="info"></div>
 </body>
 </html>
