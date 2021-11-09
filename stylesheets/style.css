@@ -70,10 +70,14 @@ body{
     height: 250px;
     border-radius: 50px;
     border: 0px;
+    transition: width 1s,height 1s,background-color 2s;
+    transition-timing-function: ease;
 }
 
 .btn-choice:hover{
-    transform: scale(1.2);
+    width: 240px;
+    height: 300px;
+    background-color: bisque;
 }
 .btn-choice img{
     max-width: 100%;
